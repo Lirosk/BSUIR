@@ -1,0 +1,248 @@
+#include <iostream>
+
+//Main logical part yep
+//I proud of it
+//it is my own, personal creation, yep
+//it is was created by the forse of my mind
+bool ssum(char* num1, char* num2, char* rez, char* sumrez, void  (*binsum) (char, char, char*))
+{
+	bool plusone = false;
+	int por = 7;
+
+	for (int i = 7; i > -1; i--)
+	{
+		if (plusone) {
+			binsum(num1[i], (((num2[i] - '0') + 1) + '0'), sumrez);
+			plusone = false;
+		}
+		else {
+			binsum(num1[i], num2[i], sumrez);
+		}
+
+		if ((sumrez[0] == '0') & (sumrez[0] == '1')) {
+			rez[por--] = sumrez[1];
+		}
+		else if ((sumrez[0] == '1') & (sumrez[0] == '0')) {
+			rez[por--] = sumrez[1];
+			plusone = true;
+		}
+		else if ((sumrez[0] == '1') & (sumrez[0] == '1')) {
+			rez[por--] = sumrez[1];
+			plusone = true;
+		}
+		else if ((sumrez[0] == '0') & (sumrez[0] == '0')) {
+			rez[por--] = sumrez[1];
+		}
+	}
+
+	return plusone;
+
+}
+
+//Checking the num for digits in number system, of course
+bool check_the_num(char* num)
+{
+	for (int i = 0; i < 8; i++)
+	{
+		if (num[i] - '0' > 1)
+		{
+			std::cout << "\nYour number must be in binary number system.\n";
+			return 0;
+		}
+	}
+
+	return 1;
+}
+
+//Sum if 2 digits
+void binsum(char a, char b, char* sumrez)
+{
+	int sum = (a - '0') + (b - '0');
+	sumrez[0] = (sum / 2) + '0';
+	sumrez[1] = (sum % 2) + '0';
+
+	return;
+}
+
+int main()
+{
+	char num1[9] = { '\0' }, num2[9] = { '\0' }, rez[9] = { '\0' }, sumrez[2] = { '\0' };
+	char num1dop[9] = { '\0' }, num2dop[9] = { '\0' }, one[9] = { '0', '0', '0', '0', '0', '0', '0', '1','\0' };
+	bool check;
+
+	//Cycle, main by idea, but there is one cycle, so just cycle
+	while (true)
+	{
+		//Typing and checking first num
+		while (true)
+		{
+			std::cout << "\n\nEnter 1st number of sum (8 bit):\n";
+			std::cin >> num1;
+			
+			//checking number for digits in its number system
+			if (check_the_num(num1))
+			{
+				break;
+			}
+		}
+
+		//Typing and checking second number
+		while (true)
+		{
+			std::cout << "\n\nEnter 2nd number of sum (8 bit):\n";
+			std::cin >> num2;
+
+			//checking number for digits in its number system
+			if (check_the_num(num2))
+			{
+				break;
+			}
+		}
+
+		//If number is negative (under zero)
+		if (num1[0] == '1')
+		{
+			//Replacing zeros and ones
+			for (int i = 1; i < 7; i++)
+			{
+				if (num1[i] == '1') {
+					num1[i] = '0';
+				}
+				else {
+					num1[i] = '1';
+				}
+			}
+
+			//Adding the one one
+			check = true;
+			//if (...) like if (plusone)
+			if (ssum(num1, one, num1dop, sumrez, binsum))
+			{
+				//checking for zeros to add one one
+				for (int i = 7; i > -1; i--)
+				{
+					if (num1dop[i] == '0') {
+						check = false;
+						break;
+					}
+				}
+
+				strcpy_s(num1, num1dop);
+				ssum(num1, one, num1dop, sumrez, binsum);
+
+				//If no zeros
+				if (check) {
+					strcpy_s(num1dop, one);
+				}
+			}
+
+		}
+		//If number is positifff (below zero)
+		else {
+			strcpy_s(num1dop, num1);
+		}
+
+		//If number if negative (under the zero)
+		if (num2[0] == '1')
+		{
+			//Replacing ones and zeros
+			for (int i = 1; i < 7; i++)
+			{
+				if (num2[i] == '1') {
+					num2[i] = '0';
+				}
+				else {
+					num2[i] = '1';
+				}
+			}
+
+			check = true;
+			//if (...) like if (plusone)
+			if (ssum(num2, one, num2dop, sumrez, binsum))
+			{
+				//looking for zeros to add one
+				for (int i = 7; i > -1; i--)
+				{
+					if (num2dop[i] == '0') {
+						check = false;
+						break;
+					}
+				}
+
+				strcpy_s(num2, num2dop);
+				ssum(num2, one, num2dop, sumrez, binsum);
+
+				//if no zeros
+				if (check) {
+					strcpy_s(num2dop, one);
+				}
+			}
+
+		}
+		//if number if positive (below the zero)
+		else {
+			strcpy_s(num2dop, num2);
+		}
+
+		//Summing the numbers, omg
+		//if (...) like if (plusone)
+		if (ssum(num1, num2, rez, sumrez, binsum))
+		{
+			strcpy_s(num1, rez);
+			//if (plusone) do...
+			ssum(num1, one, rez, sumrez, binsum);
+		}
+
+		//if number is positive, there is no need to minusing one one, right?...
+		if (rez[0] == '1')
+		{
+			//Minusing the one one, (converting to ones complement bla-bla)
+			check = true;
+			for (int i = 7; i > -1; i--)
+			{
+				//looking for ones to remove one
+				if (rez[i] == '0')
+				{
+					rez[i] = '1';
+				}
+				else
+				{
+					rez[i] = '0';
+					check = false;
+					break;
+				}
+			}
+
+			//if num is 11111111 (0 in dec) it became just 11111110 (-1 in dec)
+			if (check)
+			{
+				//converting 1 to -1
+				for (int i = 7; i > -1; i--)
+				{
+					if (one[i] == '1')
+					{
+						one[i] = '0';
+					}
+					else
+					{
+						one[i] = '1';
+					}
+				}
+
+				strcpy_s(rez, one);
+			}
+		}
+
+		//printg the result
+		std::cout << "\nResult:\n";
+		for (int i = 0; i < 8; i++)
+		{
+			std::cout << rez[i];
+		}
+		
+	}
+
+
+	//bruh...
+	return 0;
+}

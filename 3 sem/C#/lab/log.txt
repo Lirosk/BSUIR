@@ -1,0 +1,44 @@
+22.12.2020 01:33:23 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.json was changed
+
+22.12.2020 01:33:23 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.json was changed
+
+22.12.2020 01:33:23 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.json was deleted
+
+22.12.2020 01:34:28 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.json was deleted
+
+22.12.2020 01:35:39 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.json was changed
+
+22.12.2020 01:35:39 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.json was changed
+
+22.12.2020 01:35:39 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.json was deleted
+
+22.12.2020 01:35:54 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.xml was changed
+
+22.12.2020 01:35:54 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.xml was changed
+
+22.12.2020 01:35:54 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.xml was deleted
+
+22.12.2020 02:58:48 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.xml was changed
+
+22.12.2020 02:58:48 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.xml was changed
+
+22.12.2020 02:58:48 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.xml was deleted
+
+22.12.2020 03:18:22 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.json was changed
+
+22.12.2020 03:18:22 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.json was changed
+
+22.12.2020 03:18:22 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.json was deleted
+
+22.12.2020 03:18:35 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.json was changed
+
+22.12.2020 03:18:35 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.json was changed
+
+22.12.2020 03:18:35 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.json was deleted
+
+22.12.2020 03:23:54 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.xml was changed
+
+22.12.2020 03:23:54 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.xml was changed
+
+22.12.2020 03:23:55 file D:\BSUIR\Tapping\C#\3sem\lab\Tasks\OneCityDeals.xml was deleted
+

@@ -1,0 +1,11 @@
+﻿  pch.cpp
+  dll.cpp
+D:\BSUIR\Tapping\C#\LR_4\Dll1\dll.cpp(17,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\BSUIR\Tapping\C#\LR_4\Dll1\dll.cpp(71,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  dllmain.cpp
+     Создается библиотека D:\BSUIR\Tapping\C#\LR_4\Dll1\Release\Dll1.lib и объект D:\BSUIR\Tapping\C#\LR_4\Dll1\Release\Dll1.exp
+  Создание кода
+  Previous IPDB not found, fall back to full compilation.
+  All 23 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Создание кода завершено
+  Dll1.vcxproj -> D:\BSUIR\Tapping\C#\LR_4\Dll1\Release\Dll1.dll

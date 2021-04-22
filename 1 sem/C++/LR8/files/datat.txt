@@ -1,0 +1,24 @@
+Remote control
+0x52364
+01.01.2015
+true
+
+TV
+1024k TitanX MMM
+06.06.2016
+false
+
+Radio
+model MM-14
+18.12.1994
+false
+
+Phone
+Some model
+30.12.2005
+true
+
+Allocator
+unknown
+24.12.2006
+false

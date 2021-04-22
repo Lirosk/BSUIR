@@ -1,0 +1,93 @@
+ ZZZZZ(36)
++
+ ZZZZZ(36)
+=
+1ZZZZY(36)
+
+--------------------
+
+ 99999
++
+ 99999
+=
+199998
+
+---------------------
+
+ ZZ
++
+  Z
+=
+ 1Y
++
+ Z
+=
+10Y
+
+------------------------
+
+  ZZZZZZZ
++
+  ABCDZAB
+====
+       1C
++
+  ZZZZZZ0
++
+  ABCDZA0
+====
+  ABCDZBC
++
+  ZZZZZZ0
+====
+      1A0
++
+  ABCDZ0C
++
+  ZZZZZ00
+====
+     1000
++
+  ABCD0AC
++
+  ZZZZZ00
+====
+  ABCE0AC
++
+  ZZZZZ00
+====
+  ABCEZAC
++
+  ZZZZ000
+====
+    1D000
++
+  ABC0ZAC
++
+  ZZZ0000
+====
+  ABDDZAC
++
+  ZZZ0000
+====
+   1C0000
++
+  AB0DZAC
++
+  ZZ00000
+====
+  ACCDZAC
++
+  ZZ00000
+====
+  1B00000
++
+  A0CDZAC
++
+  Z000000
+====
+  BBCDZAC
++
+  Z000000
+====
+ 1ABCDZAC
