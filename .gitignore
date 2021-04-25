@@ -1,6 +1,7 @@
 Tapping/
 
 **/.vs/
+**/.vscode/
 **/Debug/
 **/x64/
 **/obj/
