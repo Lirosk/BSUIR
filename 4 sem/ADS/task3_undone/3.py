@@ -1,68 +1,50 @@
-def main() -> None:
-    global K
-    N, K = input().split()
-    N = int(N)
-    K = int(K)
+from functools import reduce
 
-    s = S()
+n, k = map(int, input().split())
+nums = list(map(int, input().split()))
+nums.sort(key = abs)
 
-    nums = input().split()
-    for i in nums:
-        s.push(int(i))
-
-    print(int(s.top()[2] % (1e9 + 7)))
-
-
-class S:
-    def __init__(self) -> None:
-        self.s = []
-        self.n = 0
-        self.lasts = []
-        self.zeros = 0
+if k == n:
+    print(reduce(int.__mul__, nums))
+    exit()
+    
+neg = 0
+aneg = 0
+for i in range(n):
+    if nums[i] < 0:
+        aneg += 1
+        if i >= k-1:
+            neg += 1
 
 
-    def push(self, el: int) -> None:
-        self.lasts.append(el)
-        if not el:
-            self.zeros += 1
 
-        if (self.s):
-            fmm = 0
-            lm = self.s[-1][1]
-            mm = self.s[-1][2]
-        
-            fcm = el
-            if lm:
-                fcm *= lm
 
-            if self.n == K:
-                last = self.lasts.pop(0)
 
-                if self.zeros:
-                    if not last:
-                        self.zeros -= 1
-                    last = 1
 
-                fcm /= last
-            
-            if not self.zeros:
-                fmm = fcm
-                if mm is not None:
-                    fmm = fmm if fmm > mm else mm
-            if self.n != K and self.n != K - 1:
-                fmm = None
 
-            self.s.append([el, fcm, fmm])
+
+
+
+
+
+
+
+if neg % 2 == 0 or k == n:
+    res = reduce(int.__mul__, nums[-k:])
+else:
+    res = 1
+    neg -= 1
+    nw = 0
+    j = n-1
+    for i in range(k):
+        if nums[j] >= 0:
+            res *= nums[j]
         else:
-            self.s.append([el, el, None])
+            if (nw < neg):
+                res *= nums[j]
+                nw += 1
+            else:
+                i -= 1
+        j -= 1
 
-        if self.n < K:
-            self.n += 1
-        
-
-    def top(self) -> list:
-        return self.s[-1]
-
-
-if __name__ == "__main__":
-    main()
+print(res)

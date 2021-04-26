@@ -4,12 +4,11 @@
 
 using std::cin;
 using std::cout;
-using std::string;
 using std::vector;
 
-int inv = 0;
+unsigned long long inv = 0;
 
-void merge_sort(vector<double>& v, int start, int finish)
+void merge_sort(int* v, int start, int finish)
 {
 	int m = (finish + start) / 2;
 
@@ -60,44 +59,13 @@ void merge_sort(vector<double>& v, int start, int finish)
 int main() 
 {
 	int n;
-	string s;
 	cin >> n;
-	std::getline(cin >> std::ws, s);
-	vector<double> nums(n, 0);
-
-	int i = 0;
-	double b = 0;
-	bool flt = false;
-	double d = 1;
-	for (auto c : s)
-	{	
-		if (c == ' ')
-		{	
-			nums[i] = b;
-			flt = false;
-			d = 1;
-			b = 0;
-			i += 1;
-			continue;
-		}
-		else if (c == '.')
-		{
-			flt = true;
-			continue;
-		}
-		
-		if (!flt)
-		{
-			b *= 10;
-			b += (int)((int)c - '0');
-		}
-		else
-		{
-			d /= 10.;
-			b += ((int)c - '0')*d;						
-		}
+	int* nums = new int[n];
+    
+	for (int i = 0; i < n; i++)
+	{
+		cin >> nums[i];
 	}
-	nums[i] = b;
 	
 	merge_sort(nums, 0, n-1);
 
