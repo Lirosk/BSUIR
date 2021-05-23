@@ -1,57 +1,79 @@
-from jsonserializer import jsonserializer
+import jsons
+from class_to_check import Ctc
+import utility
 
 def main():
-    a = A()
-    #print(json.dumps(a.__dict__, default = lambda o: o.__dict__, indent=4), "\n"*3)
-    s = jsonserializer.dumps(a, indent=4)
-    print(s, "\n"*3)
-    res = jsonserializer.loads(s)
-    print(res, '\n'*3)
+    d = jsons.dumps(Ctc, indent=4)
+    print(d)
+    p = jsons.loads(d)
+    print(p.l(10))
     
 
-def f(  a: int, b: int, 
-        /,
-        c: float, d: float,
-        *, 
-        e: str, f:str
-        ) -> None:
-    print(a, b, c, d, e, f)
+a = {1: 2, 2: 3}
+
+f = (lambda x :((l := lambda y: (l(y-1) + l(y-2)) if y > 2 else (1 if y == 2 else 0))(x)))
+#l = lambda x: x + 2
+
+class V:
+    def a():
+        print()
+
+def h():
+    print("hi")
+
+def F(n):
+    if (n == 1):
+        return 0
+    if (n == 2):
+        return 1
+    return F(n-1) + F(n-2)
 
 
-class B:
-    def __init__(self) -> None:
-        self._a = 'a'
-        self._b = 'b'
 
-    @staticmethod
-    def sm() -> None:
-        print('this is B!')
 
-class A:
-    a: str = 'a'
 
-    def __init__(self, /, *,_f1 = 1, _f2 = '2') -> None:
-        self._f1 = _f1
-        self._f2 = _f2
-        self._f3 = B()
-        self.l = [1, 2, '5', 5, {1: 1}, 9]
-        self.f4 = 'y i am here'
-        self.f5 = 'f5'
 
-    @classmethod
-    def printFs(self) -> None:
-        print(self._f1,'\n', self._f2, '\n')
 
-    @classmethod
-    def A(self) -> None:
-        print('This is A')
 
-    L1 = lambda self, x = '': print(f'this is lambda 1{x}!')
-    L2 = lambda: print('this is lambda 2!')
 
-    @staticmethod
-    def B() -> None:
-        print('From A')
 
-if __name__ == '__main__':
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
     main()
