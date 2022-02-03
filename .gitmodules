@@ -1,3 +1,6 @@
 [submodule "5_sem/SUBD/lab1-7"]
 	path = 5_sem/SUBD/lab1-7
 	url = https://github.com/Lirosk/subd-fx
+[submodule "Курсачи/5 сем, авс/256b_SIMD_ALU"]
+	path = Курсачи/5 сем, авс/256b_SIMD_ALU
+	url = https://github.com/Lirosk/256b_SIMD_ALU
