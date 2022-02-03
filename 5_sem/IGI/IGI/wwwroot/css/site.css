@@ -1,0 +1,13 @@
+﻿header, footer {
+    background-color: #343a40;
+}
+
+.nav-color {
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100% 
+}

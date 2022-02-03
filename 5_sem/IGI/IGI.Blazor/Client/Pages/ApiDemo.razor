@@ -1,0 +1,27 @@
+﻿@using IGI.Blazor.Client.Components
+@page "/apidemo"
+@inject HttpClient client
+
+<div class="container">
+    <PCPartsList @bind-PCParts="@PCParts" SelectedObjectChanged="ShowDetails">
+    </PCPartsList>
+    <PCPartDetails @bind-PCPart="@SelectedPCPart"></PCPartDetails>
+</div>
+
+@code {
+    [Parameter]
+    public IEnumerable<ListViewModel> PCParts { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        PCParts = await client.GetFromJsonAsync<IEnumerable<ListViewModel>>("api/PCPartsAPI");
+    }
+
+    [Parameter]
+    public DetailsViewModel SelectedPCPart { get; set; }
+
+    private async Task ShowDetails(int id)
+    {
+        SelectedPCPart = await client.GetFromJsonAsync<DetailsViewModel>($"api/PCPartsAPI/{id}");
+    }
+}

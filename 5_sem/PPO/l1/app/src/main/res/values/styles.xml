@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="OperationButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0sp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="backgroundColor">#A5A5A5</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="NumberButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0sp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="backgroundColor">#A5A5A5</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="FuncButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0sp</item>
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">#555555</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+
+    </style>
+
+</resources>

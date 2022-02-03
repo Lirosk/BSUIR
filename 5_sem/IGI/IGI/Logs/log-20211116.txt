@@ -1,0 +1,2 @@
+2021-11-16T16:31:21.7654220+03:00 80000026-0001-cf00-b63f-84710c7967bb [INF] Request /Cart/Add/1?returnUrl=%2FCatalog returns status code 302 (6cfb108d)
+2021-11-16T17:00:21.5213038+03:00 80000045-0001-8500-b63f-84710c7967bb [INF] Request /Admin/Edit/2 returns status code 302 (6134a794)

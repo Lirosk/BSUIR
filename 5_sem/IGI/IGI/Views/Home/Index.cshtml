@@ -1,0 +1,78 @@
+﻿    <div class="container">
+        <h2>@ViewData["text"]</h2>
+        <h3>List</h3>
+        <ol type="A">
+            @for (int i = 1; i < 5; i++)
+			{
+                <li>list item @i</li>
+			}
+        </ol>
+        <hr />
+        <h3>Form</h3>
+        <form method="post">
+            <select asp-items="@ViewData["lst"] as SelectList"></select>
+            <div class="form-group row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="stackedCheckbox" value="value1" id="checkbox1">
+                        <label class="form-check-label" for="checkbox1">
+                            Checkbox 1
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="stackedCheckbox" value="value2" id="checkbox2">
+                        <label class="form-check-label" for="checkbox2">
+                            Checkbox 2
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                        <label class="form-check-label" for="inlineRadio1">
+                            1
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                        <label class="form-check-label" for="inlineRadio2">
+                            2
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                        <label class="form-check-label" for="inlineRadio3">
+                            3
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputLogin" class="col-sm-2 col-form-label">
+                    Login:
+                </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="loginField" id="inputLogin" placeholder="Input name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">
+                    Password:
+                </label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" name="passwordField" id="inputPassword" placeholder="Input password" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary">
+                        Send
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>

@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="lib/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">WebLabsV06</a>
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Lab1</a>
+                    <a class="nav-item nav-link" href="#">Catalog</a>
+                    <a class="nav-item nav-link" href="#">Administration</a>
+                </div>
+                <a href="#" class="navbar-text ml-auto">
+                    0.00 BYN <i class="fas fa-shopping-cart nav-color"></i>
+                </a>
+                <div class="dropdown ml-4 nav-color">
+                    <div class="dropdown-toggle" id="dropdownMenuButton"
+                         data-toggle="dropdown" aria-haspopup="true"
+                         aria-expanded="false">
+                        <img src="images/avatar.jpg" width="30"
+                             alt="User" class="rounded" />
+                    </div>
+                    <div class="dropdown-menu"
+                         aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-item-text">
+                            <img src="images/avatar.jpg" width="50"
+                                 alt="User" class="rounded" />
+                            user@gmail.com
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">My goods</a>
+                        <a class="dropdown-item" href="#">Log out</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        <div class="container">
+            <h2>Laboratory work 1</h2>
+            <h3>List</h3>
+            <ol type="A">
+                <li>list item 1</li>
+                <li>list item 2</li>
+            </ol>
+            <hr />
+            <h3>Form</h3>
+            <form method="post">
+                <div class="form-group row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="stackedCheckbox" value="value1" id="checkbox1">
+                            <label class="form-check-label" for="checkbox1">
+                                Checkbox 1
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="stackedCheckbox" value="value2" id="checkbox2">
+                            <label class="form-check-label" for="checkbox2">
+                                Checkbox 2
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <label class="form-check-label" for="inlineRadio1">
+                                1
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">
+                                2
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                            <label class="form-check-label" for="inlineRadio3">
+                                3
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputLogin" class="col-sm-2 col-form-label">
+                    Login:
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="loginField" id="inputLogin" placeholder="Input name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">
+                    Password:
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="passwordField" id="inputPassword" placeholder="Input password" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary">
+                        Send
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="navbar navbar-dark navbar-expand-md bg-dark">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link" href="#">
+                        <i class="fab fa-facebook-f fa-1.5x"></i>
+                    </a>
+                    <a class="nav-item nav-link" href="#">
+                        <i class="fab fa-vk fa-1.5x"></i>
+                    </a>
+                    <a class="nav-item nav-link" href="#">
+                        <i class="fab fa-twitter fa-1.5x"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

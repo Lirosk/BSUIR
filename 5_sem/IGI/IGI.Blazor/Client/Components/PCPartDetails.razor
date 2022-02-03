@@ -1,0 +1,21 @@
+﻿@if (PCPart != null)
+{
+    <img src="@imageSrc" class="img-thumbnail" width="150" />
+    <div>
+        <p>@PCPart.Name - @PCPart.Description</p> <div class="badge badge-info ">@PCPart.Price USD</div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public DetailsViewModel PCPart { get; set; }
+    [Parameter]
+    public EventCallback<DetailsViewModel> PCPartChanged { get; set; }
+    string imageSrc
+    {
+        get
+        {
+            return $"images/{PCPart.Image}";
+        }
+    } 
+}

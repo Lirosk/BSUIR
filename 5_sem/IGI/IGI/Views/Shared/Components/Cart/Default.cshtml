@@ -1,0 +1,13 @@
+﻿@model Cart
+
+@{
+    ViewData["Title"] = "Default";
+}
+
+<a asp-controller="Cart"
+   asp-action="Index"
+   class="navbar-text ml-auto">
+    @Model.Price USD 
+    <i class="fas fa-shopping-cart nav-color"></i> 
+    (@Model.Count)
+</a>

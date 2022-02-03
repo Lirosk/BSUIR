@@ -1,0 +1,7 @@
+2021-12-17T13:13:49.1756457+03:00 40000007-0002-fb00-b63f-84710c7967bb [INF] Request /Catalog returns status code 302 (2bb20490)
+2021-12-17T13:14:04.8313524+03:00 4000001e-0000-fb00-b63f-84710c7967bb [INF] User logged in. (fdce0db4)
+2021-12-17T13:14:04.8345885+03:00 4000001e-0000-fb00-b63f-84710c7967bb [INF] Request /Identity/Account/Login?ReturnUrl=%2FCatalog returns status code 302 (b77c66d4)
+2021-12-17T13:14:10.4940377+03:00 40000004-0007-fb00-b63f-84710c7967bb [INF] User logged out. (f9c27106)
+2021-12-17T13:14:10.4945099+03:00 40000004-0007-fb00-b63f-84710c7967bb [INF] Request /Identity/Account/Logout?returnal=%2FCatalog returns status code 302 (dd859db0)
+2021-12-17T13:14:40.1031295+03:00 4000001e-0001-fe00-b63f-84710c7967bb [INF] User created a new account with password. (693a7015)
+2021-12-17T13:14:40.1073280+03:00 4000001e-0001-fe00-b63f-84710c7967bb [INF] Request /Identity/Account/Register returns status code 302 (8a4f5363)

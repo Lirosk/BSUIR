@@ -1,0 +1,40 @@
+﻿<h3>PCPartsList</h3>
+
+@if (PCParts == null)
+{
+    <p>Loading ...</p>
+}
+
+else
+{
+    <div class="list-group">
+        @{
+            var i = 1;
+            foreach (var pcPart in PCParts)
+            {
+                <button 
+                        type="button" 
+                        class="list-group-item list-group-item-action @(SelectedId == pcPart.Id ? "active" : "")"
+                        @onclick="@(e => Selected(e, pcPart.Id))">
+                    @(i++) - @pcPart.Name
+                </button>
+            }
+         }
+    </div>
+}
+
+@code {
+    private int SelectedId = 0;
+    [Parameter]
+    public EventCallback<int> SelectedObjectChanged { get; set; }
+    [Parameter]
+    public IEnumerable<ListViewModel> PCParts { get; set; }
+    [Parameter]
+    public EventCallback<IEnumerable<ListViewModel>> PCPartsChanged { get; set; }
+
+    private void Selected(MouseEventArgs e, int id)
+    {
+        SelectedId = id;
+        SelectedObjectChanged.InvokeAsync(id);
+    }
+}
