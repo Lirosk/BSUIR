@@ -29,7 +29,7 @@ namespace Program
 
         public static void Main(string[] args)
         {
-            args = "vigenere decode abiba".Split();
+            args = "vigenere encode abiba".Split();
 
             if (args.Length != 3 || args[0] == commands[0].Item1)
             {

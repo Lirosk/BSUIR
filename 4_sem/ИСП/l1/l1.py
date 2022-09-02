@@ -203,6 +203,19 @@ answer: (1, 2, 2, 0)
 '''
 
 
-n = int(input("Enter number: "))
-primes = [2] + [x for x in range(3, n + 1, 2) if list(filter(lambda i: x/i == x//i, range(3, x + 1, 2)))[0] == x]
+n: int = int(input("Enter number: "))
+primes = 
+	[2] + 
+	[x for x in range(3, n + 1, 2) 
+		if list(filter(lambda i: x/i == x//i, range(3, x + 1, 2)))[0] == x]
+
 print(primes)
+
+def fib(n: int) -> int:
+	if (n < 3):
+		return 1
+	if (n < 0):
+		return 0
+	return f(n - 1) + f(n - 2)
+
+
