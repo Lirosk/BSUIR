@@ -1,0 +1,210 @@
+from hashlib import sha256
+import random
+import os 
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
+class Point(object):
+    def __init__(self, x, y):
+        self.x, self.y = x, y
+        self.inf = False
+
+    def __repr__(self):
+        return str((self.x, self.y))
+
+    @classmethod
+    def atInfinity(cls):
+        P = cls(0, 0)
+        P.inf = True
+        return P
+
+    @classmethod
+    def secp256k1(cls):
+        return cls(55066263022277343669578718895168534326250603453777594175500187360389116729240,
+                   32670510020758816978083085130507043184471273380659243275938904335757337482424)
+
+    def __eq__(self, other):
+        if self.inf:
+            return other.inf
+        elif other.inf:
+            return self.inf
+        else:
+            return self.x == other.x and self.y == other.y
+
+    def is_infinite(self):
+        return self.inf
+
+
+class Curve(object):
+    # Set attributes of a general Weierstrass cubic y^2 = x^3 + ax^2 + bx + c over any field.
+    def __init__(self, a, b, c, char, exp):
+        self.a, self.b, self.c = a, b, c
+        self.char, self.exp = char, exp
+
+    def mult(self, P, k):
+        if P.is_infinite():
+            return P
+        elif k == 0:
+            return Point.atInfinity()
+        elif k < 0:
+            return self.mult(self.invert(P), -k)
+        else:
+            b = bin(k)[2:]
+            return self.repeat_additions(P, b, 1)
+
+    def repeat_additions(self, P, b, n):
+        if b == '0':
+            return Point.atInfinity()
+        elif b == '1':
+            return P
+        elif b[-1] == '0':
+            return self.repeat_additions(self.add(P, P), b[:-1], n + 1)
+        elif b[-1] == '1':
+            return self.add(P, self.repeat_additions(self.add(P, P), b[:-1], n + 1))
+
+
+class CurveOverFp(Curve):
+    # Construct a Weierstrass cubic y^2 = x^3 + ax^2 + bx + c over Fp.
+    def __init__(self, a, b, c, p):
+        Curve.__init__(self, a, b, c, p, 1)
+
+    # The secp256k1 curve.
+    @classmethod
+    def secp256k1(cls):
+        return cls(0, 0, 7, 2 ** 256 - 2 ** 32 - 2 ** 9 - 2 ** 8 - 2 ** 7 - 2 ** 6 - 2 ** 4 - 1)
+
+    def contains(self, P):
+        if P.is_infinite():
+            return True
+        else:
+            return (P.y * P.y) % self.char == (P.x * P.x * P.x + self.a * P.x * P.x + self.b * P.x + self.c) % self.char
+
+    def invert(self, P):
+        if P.is_infinite():
+            return P
+        else:
+            return Point(P.x, -P.y % self.char)
+
+    def add(self, P_1, P_2):
+        y_diff = (P_2.y - P_1.y) % self.char
+        x_diff = (P_2.x - P_1.x) % self.char
+        if P_1.is_infinite():
+            return P_2
+        elif P_2.is_infinite():
+            return P_1
+        elif x_diff == 0 and y_diff != 0:
+            return Point.atInfinity()
+        elif x_diff == 0 and y_diff == 0:
+            if P_1.y == 0:
+                return Point.atInfinity()
+            else:
+                ld = ((3 * P_1.x * P_1.x + 2 * self.a * P_1.x + self.b) * mult_inv(2 * P_1.y, self.char)) % self.char
+        else:
+            ld = (y_diff * mult_inv(x_diff, self.char)) % self.char
+        nu = (P_1.y - ld * P_1.x) % self.char
+        x = (ld * ld - self.a - P_1.x - P_2.x) % self.char
+        y = (-ld * x - nu) % self.char
+        return Point(x, y)
+
+
+def hash_and_cut(message, n):
+    h = hash(message)
+    b = bin(h)[2:len(bin(n))]
+    return int(b, 2)
+
+
+def hash(message):
+    m = sha256(message)
+    return int(m.hexdigest(), 16)
+
+
+def mult_inv(a, n):
+    g, x, y = euclid(a, n)
+    return x % n
+
+
+def euclid(sml, big):
+    if sml == 0:
+        return big, 0, 1
+    else:
+        g, y, x = euclid(big % sml, sml)
+        return g, x - (big // sml) * y, y
+
+
+# 1 создание ключей
+def prepare_keys(curve, P, n):
+    d = random.randrange(1, n)
+    Q = curve.mult(P, d)
+    return d, Q
+
+
+# 2 создание подписи
+def sign(message, curve, P, n, private, public):
+    d, Q = private, public
+    z = hash_and_cut(message, n)
+    r, s = 0, 0
+    while r == 0 or s == 0:
+        k = 4
+        R = curve.mult(P, k)  # (x1,y1)
+        r = R.x % n
+        s = (mult_inv(k, n) * (z + r * d)) % n
+    return Q, r, s
+
+
+# проверка цифровой подписи
+def verify(message, curve, P, n, signature):
+    Q, r, s = signature
+    if Q.is_infinite() or not curve.contains(Q):
+        return False
+    if not curve.mult(Q, n).is_infinite():
+        return False
+    if r > n or s > n:
+        return False
+    z = hash_and_cut(message, n)
+    w = mult_inv(s, n) % n
+    u_1, u_2 = z * w % n, r * w % n
+    C_1, C_2 = curve.mult(P, u_1), curve.mult(Q, u_2)
+    C = curve.add(C_1, C_2)
+    return r % n == C.x % n
+
+
+def encode(curve, G, Pm, Pb):
+    k = random.randrange(1, 10000)
+    return curve.mult(G, k), curve.add(curve.mult(Pb, k), Pm)
+
+
+def decode(curve, P1, P2, nb):
+    return curve.add(P2, curve.invert(curve.mult(P1, nb)))
+
+
+if __name__ == '__main__':
+    # y^2 = x^3 + 7
+    C = CurveOverFp.secp256k1()
+    P = Point.secp256k1()
+    n = 115792089237316195423570985008687907852837564279074904382605163141518161494337
+
+    priv, public = prepare_keys(C, P, n)
+
+    msg = ''
+    with open(os.path.join(dir_path, 'source.txt'), 'r') as message_file:
+        msg = message_file.read()
+    msg = bytes(msg, 'utf-8')
+    sig = sign(msg, C, P, n, priv, public)
+
+    print("Проверка достоверности цифровой подписи: ", end='')
+    print(verify(msg, C, P, n, sig))
+
+    with open(os.path.join(dir_path, 'signature.txt'), 'w') as signanure_file:
+        signanure_file.write(str(sig[1:]))
+
+    P = Point(*sig[1:])
+
+    priv, public = prepare_keys(C, P, n)
+    enc_pts = encode(C, P, P, public)
+
+    with open(os.path.join(dir_path, 'encrypted.txt'), 'w') as encrypted_file:
+         encrypted_file.write(str(enc_pts))
+
+    decpt = decode(C, enc_pts[0], enc_pts[1], priv)
+
+    with open(os.path.join(dir_path, 'decrypted.txt'), 'w') as decrypted_file:
+         decrypted_file.write(str(decpt))

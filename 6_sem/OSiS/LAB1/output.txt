@@ -1,0 +1,6 @@
+USER         PID COMMAND                     %MEM     TIME
+reqvel      1968 /usr/bin/ssh-agent /usr/bin  0.0 00:00:00
+reqvel      2991 tee output.txt               0.0 00:00:00
+reqvel      2990 head -n 6                    0.0 00:00:00
+reqvel      2504 /home/reqvel/.local/share/J  0.0 00:00:00
+reqvel      2989 ps -u reqvel -o user,pid,co  0.0 00:00:00

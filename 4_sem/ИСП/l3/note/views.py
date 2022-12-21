@@ -67,3 +67,20 @@ def edit(request, pk):
             'content': note.content
         }, instance=note)
         return render(request, 'note/add_note.html', {'form': form})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
