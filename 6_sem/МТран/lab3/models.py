@@ -11,12 +11,6 @@ class TokenTypes(Enum):
     RESERVED = 4
     EOF = 8
 
-    def __str__(self):
-        val = super().__str__()
-        val = val[len(self.__class__.__name__) + 1:]
-        return val
-
-
 
 class TokenInfo:
     def __init__(self,

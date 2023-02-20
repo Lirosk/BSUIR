@@ -123,7 +123,7 @@ def get_name_table(sample_filename: str) -> List[TokenInfo]:
                     check_error(token_info)                    
         
     except Exception as e:
-        print(e)
+        e.with_traceback()
 
     name_table.append(TokenInfo(type=TokenTypes.EOF, line=(line_num, line)))
 

@@ -119,12 +119,7 @@ def interpret_tokens_until(until_next: Callable[[TokenInfo], bool],
         except interpretations.InterpretationError as e:
             print(f"Error on line {token_info.line[0]}:")
             print(f"{token_info.line[1]}")
-
-            err_str = str(e)
-            if (err_str.endswith("\n")):
-                err_str = err_str[:-1]
-
-            print(err_str, end="\n\n")
+            print(e, end="\n\n")
 
             if (e._break):
                 break
