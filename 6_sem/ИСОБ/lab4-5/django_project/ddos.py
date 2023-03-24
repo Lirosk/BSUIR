@@ -9,16 +9,17 @@ def worker(i: int):
     try:
         n = 1_000_000
         while (n:=n-1) > 0 and not all_done:
-            #print(f'Worker {i} sent {1_000_000 - n}th request.')
-            requests.get('http://localhost:8000', data='posts')
-    except ConnectionError as ce:
-        all_done = True
-        print(ce)
-    finally:
-        print(f"Worker {i} is out")
+            r = requests.get('http://localhost:8000/')
+            print(r.status_code)
+            if not r.ok:
+                all_done = True
+                print(r.text)
+                break
+    except Exception:
+        ...
 
 
-for i in range(1_000):
+for i in range(100):
     print(f"Worker {i} is in.")
     threading.Thread(target=worker, args=(i,)).start()
 
