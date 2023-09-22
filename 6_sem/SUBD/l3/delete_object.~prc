@@ -1,0 +1,9 @@
+create or replace procedure delete_object(prod_schema_name IN VARCHAR,
+    object_type IN VARCHAR,
+    object_name IN VARCHAR)
+				AS
+    query_string varchar(500);   
+begin
+  
+end delete_object;
+/

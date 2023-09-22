@@ -123,19 +123,18 @@ x = random.randint(2, p-2)
 y = modexp(g, x, p)
 
 
-file_to_enc = open(os.path.join(dir_path, 'source.txt'), 'r')
+file_to_enc = open(os.path.join(dir_path, 'el_gamal_to_enc.txt'), 'r')
 normal_text = file_to_enc.read()
-file_to_enc.close()
+
 
 a, encrypted_text = encrypt(normal_text, g, y, p)
 
-encrypted_file = open(os.path.join(dir_path, 'encrypted.txt'), 'w')
-encrypted_file.write(''.join(map(lambda x: str(x), encrypted_text)))
-encrypted_file.close()
+print()
+print(''.join(map(lambda x: str(x), encrypted_text)))
+print()
 
 decrypted_text = decrypt(encrypted_text, x, p, a)
 decrypted_text = ''.join(decrypted_text)
 
-decrypted_file = open(os.path.join(dir_path, 'decrypted.txt'), 'w')
+decrypted_file = open(os.path.join(dir_path, 'el_gamal_decrypted.txt'), 'w')
 decrypted_file.write(decrypted_text)
-decrypted_file.close()

@@ -1,0 +1,10 @@
+create or replace procedure create_or_replace_object(dev_schema_name IN VARCHAR,
+    prod_schema_name IN VARCHAR,
+    obj_type IN VARCHAR,
+    obj_name IN VARCHAR)
+				AS
+    query_string varchar(500) := '';
+begin
+  
+end create_or_replace_object;
+/

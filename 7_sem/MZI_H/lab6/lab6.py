@@ -1,8 +1,6 @@
 from operator import mod
 import random
 from hashlib import sha256
-import os 
-dir_path = os.path.dirname(os.path.realpath(__file__))
 
 
 def gcd( a, b ):
@@ -110,9 +108,8 @@ r = modexp(g, k, p) % q
 
 
 
-normal_text = ''
-with open(os.path.join(dir_path, 'source.txt'), 'r') as source:
-	normal_text = source.read()
+normal_text = 'Lorem ipsum'
+
 
 s = (k * hash_function(normal_text) + x * r) % q
 
@@ -125,5 +122,4 @@ u2 = ((q - r) * w) % q
 
 v = ((modexp(g, u1, p) * modexp(y, u2, p))%p)% q 
 
-with open(os.path.join(dir_path, 'signature.txt'), 'w') as res:
-	res.write(str(v))
+print(v)

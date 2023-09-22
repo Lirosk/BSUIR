@@ -19,14 +19,14 @@ def stega_encrypt(text_inp):
         draw.point(key, (elem, g, b))
         f.write(str(key) + '\n')
     print('keys were written to the keys.txt file')
-    img.save(os.path.join(dir_path, "encrypted_img.png"), "PNG")
+    img.save(os.path.join(dir_path, "newimage.png"), "PNG")
     f.close()
 
 
 def stega_decrypt():
     a = []
     keys = []
-    img = Image.open(os.path.join(dir_path, "encrypted_img.png"))
+    img = Image.open(os.path.join(dir_path, "newimage.png"))
     pix = img.load()
     f = open(os.path.join(dir_path, 'keys.txt'), 'r')
     y = str([line.strip() for line in f])
@@ -38,11 +38,9 @@ def stega_decrypt():
     return ''.join([chr(elem) for elem in a])
 
 
-text = ''
-with open(os.path.join(dir_path, 'source.txt'), 'r') as source_file:
-    text = source_file.read()
 
-decrypted_text = stega_decrypt()
-
-with open(os.path.join(dir_path, 'decrypted.txt'), 'w') as decrypted_file:
-    decrypted_file.write(decrypted_text)
+text = 'Lorem ipsum dor sit amore amore'
+print('Result of encrypt: ')
+stega_encrypt(text)
+print('\nResult of decrypt: ')
+print("You message: ", stega_decrypt())

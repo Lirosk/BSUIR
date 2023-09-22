@@ -1,15 +1,11 @@
 from hashlib import sha256
 import random
-import os 
-dir_path = os.path.dirname(os.path.realpath(__file__))
+
 
 class Point(object):
     def __init__(self, x, y):
         self.x, self.y = x, y
         self.inf = False
-
-    def __repr__(self):
-        return str((self.x, self.y))
 
     @classmethod
     def atInfinity(cls):
@@ -113,8 +109,7 @@ def hash_and_cut(message, n):
 
 
 def hash(message):
-    m = sha256(message)
-    return int(m.hexdigest(), 16)
+    return int(sha256(message).hexdigest(), 16)
 
 
 def mult_inv(a, n):
@@ -134,6 +129,8 @@ def euclid(sml, big):
 def prepare_keys(curve, P, n):
     d = random.randrange(1, n)
     Q = curve.mult(P, d)
+    print("Private key: d = " + str(d))
+    print("Public key: Q = " + str(Q.x) + ',' + str(Q.y))
     return d, Q
 
 
@@ -183,28 +180,14 @@ if __name__ == '__main__':
     n = 115792089237316195423570985008687907852837564279074904382605163141518161494337
 
     priv, public = prepare_keys(C, P, n)
-
-    msg = ''
-    with open(os.path.join(dir_path, 'source.txt'), 'r') as message_file:
-        msg = message_file.read()
-    msg = bytes(msg, 'utf-8')
+    msg = b'024'
     sig = sign(msg, C, P, n, priv, public)
-
-    print("Проверка достоверности цифровой подписи: ", end='')
-    print(verify(msg, C, P, n, sig))
-
-    with open(os.path.join(dir_path, 'signature.txt'), 'w') as signanure_file:
-        signanure_file.write(str(sig[1:]))
-
-    P = Point(*sig[1:])
-
-    priv, public = prepare_keys(C, P, n)
+    print("\nПроверка достоверности цифровой подписи ")
+    print(verify(b'024', C, P, n, sig))
+    print(verify(b'230', C, P, n, sig))
+    print('\nENCODING/DECODING')
+    print('Point to encode: P = {}, {}'.format(P.x, P.y))
     enc_pts = encode(C, P, P, public)
-
-    with open(os.path.join(dir_path, 'encrypted.txt'), 'w') as encrypted_file:
-         encrypted_file.write(str(enc_pts))
-
+    print('ENCODING: \nP1 = ({}, {})\nP2 = ({}, {})'.format(enc_pts[0].x, enc_pts[0].y, enc_pts[1].x, enc_pts[1].y))
     decpt = decode(C, enc_pts[0], enc_pts[1], priv)
-
-    with open(os.path.join(dir_path, 'decrypted.txt'), 'w') as decrypted_file:
-         decrypted_file.write(str(decpt))
+    print('DECODING: P = ({}, {})'.format(decpt.x, decpt.y))

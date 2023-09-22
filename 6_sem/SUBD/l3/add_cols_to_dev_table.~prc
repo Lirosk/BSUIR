@@ -1,0 +1,9 @@
+create or replace procedure add_cols_to_dev_table(dev_schema_name in varchar,
+    prod_schema_name in varchar,
+    tab_name in varchar)
+				AS
+    query_string varchar(500);
+begin
+  
+end add_cols_to_dev_table;
+/

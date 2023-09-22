@@ -1,0 +1,8 @@
+declare 
+  n number := 2;
+begin
+	for c in (select * from MyTable where rownum < 100 or rownum > 9950)
+		loop
+			dbms_output.put_line(c.id || ' ' || c.val);
+		end loop;
+end;		  

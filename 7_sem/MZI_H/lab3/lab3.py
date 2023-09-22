@@ -39,18 +39,12 @@ def rsa_decrypt(ciphertext, privateKey):
 p = 13
 q = 17
 publicKey, privateKey = generateKey(p, q)
-
-file_to_enc = open(os.path.join(dir_path, 'source.txt'), 'r')
+file_to_enc = open(os.path.join(dir_path, 'rsa_to_enc.txt'), 'r')
 m = file_to_enc.read()
-file_to_enc.close()
-
-
+print('Открытый текст: % s' % m)
 c = rsa_encrypt(m, publicKey)
-file_encrypted = open(os.path.join(dir_path, 'encrypted.txt'), 'w')
-file_encrypted.write(''.join(map(lambda x: f'{hex(x)[2:]:02}', c)))
-file_encrypted.close()
-
+print('Зашифрованный текст: % s' % c)
 d = rsa_decrypt(c, privateKey)
-decrypted_file = open(os.path.join(dir_path, 'decrypted.txt'), 'w')
+print('Обычный текст после расшифровки: % s' % d)
+decrypted_file = open(os.path.join(dir_path, 'rsa_decrypted.txt'), 'w')
 decrypted_file.write(d)
-decrypted_file.close()

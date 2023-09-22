@@ -1,0 +1,7 @@
+declare
+ res number;
+begin
+	res := fee(1, 50);
+	dbms_output.put_line(res);
+end;
+

@@ -53,12 +53,13 @@ class TestStringMethods(unittest.TestCase):
         block_size = 8
         key = prepare_des_key(key, block_size)
         # 1. Open file 'des3_to_enc.txt' & read text
-        with open(os.path.join(dir_path, 'source.txt'), 'r') as file_to_enc:
+        with open(os.path.join(dir_path, 'des_to_enc.txt'), 'r') as file_to_enc:
             normal_text = file_to_enc.read()
             # 2. Encrypt read text
             encrypted_text = des_encrypt(key, normal_text, block_size)
-            with open(os.path.join(dir_path, 'des_encoded.txt'), 'w') as encrypted_file:
-                encrypted_file.write(encrypted_text.hex())
+            print()
+            print(''.join(map(lambda x: str(x), encrypted_text)))
+            print()
             # 3. Encrypt decrypted text
             decrypted_text = des_decrypt(key, encrypted_text, block_size)
             # 4. Save decrypted text to 'decrypted.txt'
@@ -73,16 +74,17 @@ class TestStringMethods(unittest.TestCase):
         key = prepare_des3_key(key, key_size)
         iv = prepare_iv(block_size)
         # 1. Open file 'des3_to_enc.txt' & read text
-        with open(os.path.join(dir_path, 'source.txt'), 'r') as file_to_enc:
+        with open(os.path.join(dir_path, 'des_to_enc.txt'), 'r') as file_to_enc:
             normal_text = file_to_enc.read()
             # 2. Encrypt read text
             encrypted_text = des3_encrypt(key, iv, normal_text)
-            with open(os.path.join(dir_path, 'des3_encoded.txt'), 'w') as encrypted_file:
-                encrypted_file.write(encrypted_text.hex())
+            print()
+            print(encrypted_text.hex())
+            print()
             # 3. Encrypt decrypted text
             decrypted_text = des3_decrypt(key, iv, encrypted_text)
             # 4. Save decrypted text to 'decrypted.txt'
-            with open(os.path.join(dir_path, 'des3_dec.txt'), 'w') as decrypted_file:
+            with open(os.path.join(dir_path, 'des_dec.txt'), 'w') as decrypted_file:
                 decrypted_file.write(decrypted_text)
                 self.assertEqual(normal_text, decrypted_text)
 

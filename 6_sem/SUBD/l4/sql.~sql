@@ -1,0 +1,27 @@
+create or replace package sasi is 
+  function f(n number)
+  return number;
+end sasi;
+
+
+/
+
+create or replace package body sasi is
+  function f(n number)
+  return number
+  is
+    return n + 1;
+  end f;
+end;
+
+/
+
+
+declare 
+  n number;
+begin
+  n := sasi.f(0);
+  dbms_output.put_line(n);
+end;
+
+/

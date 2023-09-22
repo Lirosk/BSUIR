@@ -135,11 +135,13 @@ class MD5(object):
         return f"{format(A, '08x')}{format(B, '08x')}{format(C, '08x')}{format(D, '08x')}"
 
 
-file_to_enc = open(os.path.join(dir_path, 'source.txt'), 'r')
+file_to_enc = open(os.path.join(dir_path, 'md5_to_enc.txt'), 'r')
 normal_text = file_to_enc.read()
-file_to_enc.close()
+
 
 encrypted_text = MD5.hash(normal_text)
 
-with open(os.path.join(dir_path, 'encrypted.txt'), 'w') as encrypted:
-    encrypted.write(''.join(map(lambda x: str(x), encrypted_text)))
+print()
+print(''.join(map(lambda x: str(x), encrypted_text)))
+print()
+

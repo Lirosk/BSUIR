@@ -237,23 +237,25 @@ class STB:
 
 
 def main():
-    key = 'sit amore amore dolor'
+    key = 'hello'
 
     stb = STB(key)
 
-    with open(os.path.join(__location__, 'source.txt'), 'r') as f:
+    with open(os.path.join(__location__, 'text.txt'), 'r') as f:
         text = f.read()
 
     text_encrypted = stb.encrypt(text, S=16)
 
-    with open(os.path.join(__location__, 'encrypted.txt'), 'w') as f:
+    with open(os.path.join(__location__, 'text_encrypted.txt'), 'w') as f:
         f.write(text_encrypted.hex())
 
     text_decrypted = stb.decrypt(text_encrypted, S=16)
 
-    with open(os.path.join(__location__, 'decrypted.txt'), 'w') as f:
+    with open(os.path.join(__location__, 'result.txt'), 'w') as f:
         f.write(text_decrypted)
 
+    if text == text_decrypted: print('OK')
+    else: print('FAILED')
     print()
 
 
