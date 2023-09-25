@@ -1,0 +1,172 @@
+﻿<Window x:Class="l1.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:l1"
+		mc:Ignorable="d"
+		Title="MainWindow" Height="300" Width="400">
+
+    <TabControl>
+        <TabItem Header="Task1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="173*"/>
+                    <ColumnDefinition Width="9*"/>
+                    <ColumnDefinition Width="212*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2">
+                    <Label x:Name="lblP" HorizontalAlignment="Left" Content="P(A)"/>
+                    <TextBox x:Name="txtP" Height="20px" Width="100px" HorizontalAlignment="Left" />
+                    <Label x:Name="lblMessage" Width="175" HorizontalAlignment="Left" Content="Invalid input." Foreground="Red" Height="26" Visibility="Hidden" />
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="2">
+                    <Button x:Name="btnDoIt" Content="Do it" Click="btnDoIt_Click"/>
+
+                    <StackPanel x:Name="spResults" Visibility="Hidden" Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <Label Content="num of true" />
+                            <Label Content="% of true"/>
+                            <Label Content="Total"></Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <Label x:Name="lblNumTrue" Content="" />
+                            <Label x:Name="lblPercTrue" Content=""/>
+                            <Label x:Name="lblNumTotal" Content=""></Label>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Task2">
+            <Grid>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Width="400px">
+                    <Label Content="P(A1), ... , P(An)" />
+                    <TextBox x:Name="t2_txtPs"></TextBox>
+
+                    <Label x:Name="t2_lblMessage" Content="Invalid input" Foreground="red" Visibility="Hidden" />
+
+                    <Button x:Name="t2_btnDoIt" Content="Do it" HorizontalAlignment="Right" Width="100px" Margin="0,5,0,0" Click="t2_btnDoIt_Click"/>
+                    <Label x:Name="t2_lblResDescr" Visibility="Hidden" Content="% for each:" />
+                    <Label x:Name="t2_lblRes" Content="" />
+                    <Label x:Name="t2_lblTotal" Content=""/>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Task3">
+            <StackPanel Orientation="Vertical" Margin="10, 0, 0, 0">
+                <StackPanel Orientation="Horizontal" >
+                    <StackPanel Orientation="Vertical" Width="100px">
+                        <Label Content="P(A)" />
+                        <TextBox x:Name="t3_txtP1" />
+                        <Label x:Name="t3_lblP1Message" Content="Invalid input" Foreground="Red" Visibility="Hidden" />
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="100px" Margin="25,0,0,0">
+                        <Label Content="P(B|A)"/>
+                        <TextBox x:Name="t3_txtP2"/>
+                        <Label x:Name="t3_lblP2Message" Content="Invalid input" Foreground="Red" Visibility="Hidden" />
+                    </StackPanel>
+                </StackPanel>
+
+                <Button x:Name="t3_btnDoIt" Content="Do it" HorizontalAlignment="Left" Width="100px" Margin="0,10,0,10" Click="t3_btnDoIt_Click" />
+
+                <StackPanel x:Name="t3_spRes" Orientation="Vertical" Visibility="Hidden">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical" Margin="0,0,0,0" Background="#FFF1DCDC" >
+                            <Label Content="AB"/>
+                            <Label x:Name="t3_lblAB" Content="" />
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="10,0,0,0" Background="#FFF1DCDC">
+                            <Label Content="A!B"/>
+                            <Label x:Name="t3_lblAnB" Content="" />
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="10,0,0,0" Background="#FFF1DCDC">
+                            <Label Content="!AB"/>
+                            <Label x:Name="t3_lblnAB" Content="" />
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="10,0,0,0" Background="#FFF1DCDC">
+                            <Label Content="!A!B"/>
+                            <Label x:Name="t3_lblnAnB" Content=""/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <Label Content="Total for each:" />
+                    <Label x:Name="t3_lblTotal" Content="" />
+                </StackPanel>
+            </StackPanel>
+        </TabItem>
+
+        <TabItem Header="Task4">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Vertical" Margin="10, 0, 10, 0">
+                    <Label Content="P(A1), ..., P(An)" />
+                    <TextBox x:Name="t4_txtPs" Text=""/>
+                    <Label x:Name="t4_lblMessage" Visibility="Hidden" Content="Invalid input" Foreground="Red" />
+                    <Button x:Name="t4_btnDoIt" HorizontalAlignment="Left" Width="100px" Content="Do it" Click="t4_btnDoIt_Click"/>
+                </StackPanel>
+                <StackPanel x:Name="t4_spRes" Visibility="Hidden" Orientation="Vertical">
+                    <Label Content="% for each" />
+                    <Label x:Name="t4_lblRes" Content="" VerticalAlignment="Stretch" />
+                </StackPanel>
+            </StackPanel>
+        </TabItem>
+
+        <TabItem Header="Add" Height="20" VerticalAlignment="Top">
+            <StackPanel Orientation="Vertical" Margin="10, 0, 10, 0">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical" Width="100px">
+                        <Label Content="Money" />
+                        <TextBox x:Name="add_txtMoney" />
+                        <Label x:Name="add_lblMessage" Content="Invalud input" Foreground="Red" Visibility="Hidden"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="100px" Margin="10,0,0,0">
+                        <Label Content="Game" />
+                        <TextBox x:Name="add_txtGame" />
+                    </StackPanel>
+
+                    <Button x:Name="add_btnAddGame" Content="Add" Margin="20,0,0,0" Height="20" Width="30" Click="add_btnAddGame_Click" />
+                </StackPanel>
+
+                <Grid Margin="0,0,0,0">
+                    <Button x:Name="add_btnCalc" Content="Do it" Width="100" HorizontalAlignment="Left" Click="add_btnCalc_Click"/>
+                    <Button x:Name="add_btnClear" Content="Clear" Width="100" HorizontalAlignment="Right" Click="add_btnClear_Click" />
+                </Grid>
+
+                <StackPanel x:Name="add_spResGame" Visibility="Hidden" Orientation="Horizontal">
+                    <Label Content="Selected game: " />
+                    <Label x:Name="add_lblGameSelected" Content=""/>
+                </StackPanel>
+
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Total money: "/>
+                    <Label x:Name="add_lblTotalMoney" Content="0" />
+                </StackPanel>
+
+                <StackPanel CanVerticallyScroll="True" Orientation="Horizontal" Margin="0,25,0,0">
+                    <StackPanel CanVerticallyScroll="False" Orientation="Vertical" Width="130px" Background="Red">
+                        <Label Content="Games:" Width="130" />
+                        <ListBox x:Name="add_lstGames" Background="Red">
+
+                        </ListBox>
+                    </StackPanel>
+                    <StackPanel CanVerticallyScroll="False" Orientation="Vertical" Background="Lime" Width="122">
+                        <Label Content="Money:" Width="130" />
+                        <ListBox x:Name="add_lstMoney" Background="Lime">
+
+                        </ListBox>
+                    </StackPanel>
+                    <StackPanel CanVerticallyScroll="False" Orientation="Vertical" Width="122px">
+                        <Label Content="% of sum:" Background="Cyan" />
+                        <ListBox x:Name="add_lstPercent" Background="Cyan">
+
+                        </ListBox>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </TabItem>
+    </TabControl>
+</Window>

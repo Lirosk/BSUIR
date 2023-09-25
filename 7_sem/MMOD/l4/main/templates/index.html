@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<form class="main-container">
+    <div class="cmo_table">
+        <div class="cmo_row">
+            <span>Characteristics</span>
+            <span>Common CMO</span>
+            <span>Nominal CMO</span>
+        </div>
+        <div class="cmo_row">
+            <span>Intensity:</span>
+            <span>{{ stats_common.intensity }}</span>
+            <span>{{ stats_nominal.intensity }}</span>
+        </div>
+        <div class="cmo_row">
+            <span>A:</span>
+            <span>{{ stats_common.A }}</span>
+            <span>{{ stats_nominal.A }}</span>
+        </div>
+        <div class="cmo_row">
+            <span>Q:</span>
+            <span>{{ stats_common.Q }}</span>
+            <span>{{ stats_nominal.Q }}</span>
+        </div>
+        <div class="cmo_row">
+            <span>P0:</span>
+            <span>{{ stats_common.p0 }}</span>
+            <span></span>
+        </div>
+        <div class="cmo_row">
+            <span>Pn:</span>
+            <span>{{ stats_common.pn }}</span>
+            <span></span>
+        </div>
+        <div class="cmo_row">
+            <span>Prej:</span>
+            <span>{{ stats_common.p_rej }}</span>
+            <span></span>
+        </div>
+    </div>
+</form>
+{% endblock %}
